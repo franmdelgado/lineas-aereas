@@ -2,6 +2,7 @@ package service;
 
 import entities.Vuelo;
 import model.ShortestPathResponse;
+import others.Database;
 import util.Arista;
 import util.Grafo;
 
@@ -10,22 +11,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class GestorVuelos {
-    public static String CORDOBA = "CORDOBA";
-    public static String BUENOS_AIRES = "BS AS";
-    public static String JUJUY = "JUJUY";
-    public static String BARILOCHE = "BARILOCHE";
-    public static String MISIONES = "MISIONES";
-    public static String SALTA = "SALTA";
-    public static String TUCUMAN = "TUCUMAN";
-    public static String SANTA_CRUZ = "SANTA CRUZ";
     private final List<Vuelo> vuelos;
     private static GestorVuelos instance;
     private final Grafo matrizIncidencia;
 
     private GestorVuelos() {
         this.vuelos = new ArrayList<>();
-        matrizIncidencia = new Grafo();
-        crearMatrizIncidencia();
+        matrizIncidencia = Database.crearMatrizIncidencia();
     }
 
     public static GestorVuelos getInstance(){
@@ -33,41 +25,6 @@ public class GestorVuelos {
             instance = new GestorVuelos();
 
         return instance;
-    }
-
-    private void crearMatrizIncidencia(){
-        matrizIncidencia.addArista(CORDOBA, BUENOS_AIRES, 120000);
-        matrizIncidencia.addArista(CORDOBA, JUJUY, 80000);
-        matrizIncidencia.addArista(CORDOBA, BARILOCHE, 200000);
-
-        matrizIncidencia.addArista(BUENOS_AIRES, CORDOBA, 150000);
-        matrizIncidencia.addArista(BUENOS_AIRES, JUJUY, 120000);
-        matrizIncidencia.addArista(BUENOS_AIRES, BARILOCHE, 250000);
-        matrizIncidencia.addArista(BUENOS_AIRES, MISIONES, 200000);
-        matrizIncidencia.addArista(BUENOS_AIRES, SANTA_CRUZ, 350000);
-
-        matrizIncidencia.addArista(JUJUY, CORDOBA, 75000);
-        matrizIncidencia.addArista(JUJUY, BUENOS_AIRES, 120000);
-        matrizIncidencia.addArista(JUJUY, SALTA, 55000);
-        matrizIncidencia.addArista(JUJUY, TUCUMAN, 68000);
-
-        matrizIncidencia.addArista(BARILOCHE, CORDOBA, 220000);
-        matrizIncidencia.addArista(BARILOCHE, BUENOS_AIRES, 350000);
-        matrizIncidencia.addArista(BARILOCHE, SANTA_CRUZ, 550000);
-
-        matrizIncidencia.addArista(MISIONES, BUENOS_AIRES, 170000);
-
-        matrizIncidencia.addArista(SALTA, CORDOBA, 60000);
-        matrizIncidencia.addArista(SALTA, BUENOS_AIRES, 110000);
-        matrizIncidencia.addArista(SALTA, JUJUY, 80000);
-        matrizIncidencia.addArista(SALTA, TUCUMAN, 60000);
-
-        matrizIncidencia.addArista(TUCUMAN, CORDOBA, 55000);
-        matrizIncidencia.addArista(TUCUMAN, BUENOS_AIRES, 1250000);
-        matrizIncidencia.addArista(TUCUMAN, JUJUY, 20000);
-
-        matrizIncidencia.addArista(SANTA_CRUZ, BUENOS_AIRES, 380000);
-        matrizIncidencia.addArista(SANTA_CRUZ, BARILOCHE, 550000);
     }
 
     public void crearVuelo(String origen, String destino, int capacidad){
