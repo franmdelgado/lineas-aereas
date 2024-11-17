@@ -23,7 +23,18 @@ public class Main {
             op = sc.nextInt();
             switch (op) {
                 case 1:
-                    // Código para la Opción 1
+                    opciones();
+                    System.out.print("Origen: ");
+                    or = sc.next();
+                    System.out.print("Destino: ");
+                    de = sc.next();
+                    System.out.print("Nombre: ");
+                    String nombre = sc.next();
+                    System.out.print("Apellido: ");
+                    String apellido = sc.next();
+                    System.out.print("DNI: ");
+                    int dni = sc.nextInt();
+                    gestor.addPassenger(nombre, apellido, dni, or, de);
                     break;
                 case 2:
                     opciones();

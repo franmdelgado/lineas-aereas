@@ -28,8 +28,16 @@ public class GestorVuelos {
     }
 
     public void crearVuelo(String origen, String destino, int capacidad){
-        Vuelo vuelo = new Vuelo(origen, destino, capacidad);
-        this.vuelos.add(vuelo);
+        List<Arista> vecinos = matrizIncidencia.getVecinos(origen);
+        for (Arista a : vecinos){
+            if(a.getDestino().equals(destino)){
+                Vuelo vuelo = new Vuelo(origen, destino, capacidad);
+                this.vuelos.add(vuelo);
+                return;
+            }
+        }
+        System.out.println("No se puede crear un vuelo a un destino que no sea vecino del origen");
+
     }
 
     public void addPassenger(String name, String surname, int dni, String origen, String destino){

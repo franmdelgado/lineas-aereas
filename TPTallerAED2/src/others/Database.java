@@ -30,6 +30,7 @@ public class Database {
         //gestor.addPassenger("Nadia", "Martinez", 753, CORDOBA, BUENOS_AIRES);
 
         gestor.crearVuelo(JUJUY, BUENOS_AIRES, 10);
+
         gestor.addPassenger("Juan", "Perez", 123, JUJUY, BUENOS_AIRES);
         gestor.addPassenger("Pedro", "Dominguez", 456, JUJUY, BUENOS_AIRES);
         gestor.addPassenger("Lucia", "Gonzalez", 789, JUJUY, BUENOS_AIRES);
@@ -40,6 +41,9 @@ public class Database {
         gestor.addPassenger("Gisela", "Diaz", 258, JUJUY, BUENOS_AIRES);
         gestor.addPassenger("Gisela", "Diaz", 258, JUJUY, BUENOS_AIRES);
         //gestor.addPassenger("Gisela", "Diaz", 258, JUJUY, BUENOS_AIRES);
+
+        gestor.crearVuelo(CORDOBA, SALTA, 10);
+        gestor.crearVuelo(CORDOBA, BARILOCHE, 10);
 
 
     }
