@@ -68,7 +68,7 @@ public class Grafo {
             for (Arista vecino : getVecinos(actual)) {
                 if (visitados.contains(vecino.getDestino())) continue;
 
-                Optional<Vuelo> v = GestorVuelos.getInstance().findVuelo(actual, vecino.getDestino());
+                Optional<Vuelo> v = GestorVuelos.getInstance().findFlight(actual, vecino.getDestino());
                 float peso = v.isPresent() ? v.get().getPrice() : vecino.getPeso();
                 float nuevaDistancia = distancias.get(actual) + peso;
 

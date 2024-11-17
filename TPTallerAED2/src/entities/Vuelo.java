@@ -7,7 +7,7 @@ import util.NodoAVL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Vuelo implements IVuelo{
+public class Vuelo {
     private final ArbolAVL aeronave;
     private final String origen;
     private final String destino;
@@ -22,7 +22,6 @@ public class Vuelo implements IVuelo{
         this.seats = new ArrayList<>();
     }
 
-    @Override
     public boolean addPassenger(String name, String surname, int dni){
         int seat = searchSeat(seats, capacidad);
         if(seat != -1) {
@@ -47,7 +46,6 @@ public class Vuelo implements IVuelo{
         }
     }
 
-    @Override
     public void imprimirVuelo() {
         System.out.println("\nVuelo " + origen + " -> " + destino);
         this.aeronave.inOrden();
@@ -75,7 +73,7 @@ public class Vuelo implements IVuelo{
             if(occCap >= 50 && occCap < 70)
                 return defaultPrice * 0.9f;
 
-            if(occCap >= 70)
+            if(occCap >= 70 && occCap < 100)
                 return defaultPrice * 0.8f;
         }
 

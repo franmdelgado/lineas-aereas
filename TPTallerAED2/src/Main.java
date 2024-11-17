@@ -1,5 +1,5 @@
 import model.ShortestPathResponse;
-import others.Database;
+import data.Database;
 import service.GestorVuelos;
 
 import java.util.Scanner;
@@ -15,14 +15,25 @@ public class Main {
 
         do{
             System.out.println("\n===== MENÚ DE OPCIONES =====");
-            System.out.println("1- Registrar tripulante");
-            System.out.println("2- Buscar vuelo mas barato");
-            System.out.println("3- Imprimir vuelo");
-            System.out.println("4- Salir");
+            System.out.println("1- Crear vuelo");
+            System.out.println("2- Registrar tripulante");
+            System.out.println("3- Buscar vuelo mas barato");
+            System.out.println("4- Imprimir vuelo");
+            System.out.println("5- Salir");
             System.out.print("Seleccione una opción: ");
             op = sc.nextInt();
             switch (op) {
                 case 1:
+                    opciones();
+                    System.out.print("Origen: ");
+                    or = sc.next();
+                    System.out.print("Destino: ");
+                    de = sc.next();
+                    System.out.print("Capacidad: ");
+                    int cap = sc.nextInt();
+                    gestor.createFlight(or, de, cap);
+                    break;
+                case 2:
                     opciones();
                     System.out.print("Origen: ");
                     or = sc.next();
@@ -36,7 +47,7 @@ public class Main {
                     int dni = sc.nextInt();
                     gestor.addPassenger(nombre, apellido, dni, or, de);
                     break;
-                case 2:
+                case 3:
                     opciones();
                     System.out.print("Origen: ");
                     or = sc.next();
@@ -47,20 +58,20 @@ public class Main {
                     System.out.println("Opcion mas barata viajando desde " + or + " hasta " + de + ": " + String.join(" -> ", sp.getPath()));
                     System.out.println("Costo total: $" + sp.getTotalCost());
                     break;
-                case 3:
+                case 4:
                     opciones();
                     System.out.print("Origen: ");
                     or = sc.next();
                     System.out.print("Destino: ");
                     de = sc.next();
-                    gestor.imprimirVuelo(or, de);
+                    gestor.printFlight(or, de);
                     break;
-                case 4:
+                case 5:
                     break;
                 default:
                     System.out.println("Opción no válida. Intente de nuevo.");
             }
-        } while (op != 4);
+        } while (op != 5);
     }
 
     public static void opciones(){
