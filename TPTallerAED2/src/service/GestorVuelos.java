@@ -84,7 +84,7 @@ public class GestorVuelos {
             if(a.getDestino().equalsIgnoreCase(destino))
                 return a.getPeso();
         }
-        throw new IllegalArgumentException("El vertice 'destino' no es vecino de 'origen'");
+        throw new IllegalArgumentException("Error al obtener 'defaultPrice': El vertice " + destino + " no es vecino de " + origen);
     }
 
     public ShortestPathResponse getCheaperFlight(String origen, String destino){
